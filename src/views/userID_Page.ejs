@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+
+<body>
+    <div class="header">headert
+        <form action="/" method="GET">
+            <button type="submit" class="home btn">Home</button>
+        </form>
+        <form action="/register" method="GET">
+            <button type="submit" class="signin btn">Sign In</button>
+        </form>
+        <form action="/login" method="GET">
+            <button class="login btnbtn">Log In</button>
+        </form>
+
+        <div class="seachfor">
+            <input />
+            <button class="seach btn">Seach</button>
+        </div>
+    </div>
+    <div>tabbar
+        <div>
+
+            <div>
+                <label>fullname : <%=data[0]%></label><br>
+                <label>Email : <%=data[1]%></label><br>
+                <label>phone : <%=data[2]%></label>
+            </div>
+        </div>
+        <div>
+            my shop
+        </div>
+        <div>
+            update my infor
+        </div>
+    </div>
+    <div>content</div>
+    <div>footer</div>
+</body>
+
+</html>

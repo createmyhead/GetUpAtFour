@@ -1,0 +1,6 @@
+GET http://localhost:3001/
+########
+GET http://localhost:3001/register
+
+#######
+GET http://localhost:3001/login/userpage/tan
