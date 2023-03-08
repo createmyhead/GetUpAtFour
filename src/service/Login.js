@@ -3,7 +3,7 @@ import db from '../models/index';
 import express from 'express';
 const createError = require('http-errors');
 const app = express()
-//import SignInAccessToken from '../service/JWTService'
+import SignAccessToken from '../service/JWTService';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,8 +26,12 @@ const UserLogin = async (req, res, next) => {
                 next(createError(400, 'sai password'));
                 next();
             }
+            const accessToken = await SignAccessToken(IDExist.userID)
             const userIDforparam = await IDExist.userID;
-            return res.redirect(`/login/userpage/${userIDforparam}`);
+            return res.json({
+                accessToken
+            })
+            // res.redirect(`/login/userpage/${userIDforparam}`);
         }
         catch (e) { reject(e) };
     });

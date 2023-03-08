@@ -34,9 +34,9 @@ const userPageLogout = async (req, res) => {
 }
 // User page
 const UserPage = async (req, res) => {
-    await getDataUser(req, res);
-    const newusserData = await axios.get('http://localhost:3001/login/userpage/tan');
-    console.log(newusserData)
+    // await getDataUser(req, res);
+    // const newusserData = await axios.get('http://localhost:3001/login/userpage/tan');
+    // console.log(newusserData)
     return res.render('userID_Page.ejs')
 }
 export default {

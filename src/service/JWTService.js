@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken');
 
-const SignInAccessToken = async (userID) => {
+const SignAccessToken = async (userID) => {
     return new Promise((resolve, reject) => {
         try {
             const payload = {
@@ -19,4 +19,4 @@ const SignInAccessToken = async (userID) => {
     })
 }
 
-export default SignInAccessToken
+export default SignAccessToken
