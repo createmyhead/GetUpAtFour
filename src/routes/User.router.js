@@ -1,8 +1,10 @@
 import express from 'express';
 import controller from '../controller/controller';
 
-
 const router = express.Router();
+// const app = express()
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }))
 
 const InitUserPage = (app) => {
     router.get('/register', controller.userPageRegister);

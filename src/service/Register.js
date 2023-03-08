@@ -2,24 +2,48 @@ import bcrypt from 'bcryptjs';
 import db from '../models/index';
 import express from 'express';
 
+
 const salt = bcrypt.genSaltSync(10);
 const createError = require('http-errors');
-const router = express.Router();
+const app = express()
 
-const makeNewUser = async (data) => {
-    const passwordinput = await data.password;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const makeNewUser = async (req, res, next) => {
+    const { fullName, userID, email, password, phonenumber } = req.body;
+
     return new Promise(async (resolve, rejeck) => {
         try {
-            const hashedPW = await bcrypt.hashSync(passwordinput, salt);
-            await db.User.create({
-                fullName: data.fullName,
-                userID: data.userID,
-                email: data.email,
+            if (!fullName || !userID || !password || !email || !phonenumber) {
+                next(createError(400, 'input full information please !'));
+                next();
+            }
+            const existEmail = await db.User.findOne({ where: { email: email } });
+            const existPhone = await db.User.findOne({ where: { phonenumber: phonenumber } });
+            if (existEmail) {
+                console.log('lỗi trung email');
+                next(createError(409, 'email is exist'));
+                next();
+            }
+            if (existPhone) {
+                console.log('lỗi trung password');
+                next(createError(409, 'phonenumber is exist'));
+                next();
+            }
+            const hashedPW = bcrypt.hashSync(password, salt);
+            const createNewUser = await db.User.create({
+                fullName: fullName,
+                userID: userID,
+                email: email,
                 password: hashedPW,
-                phonenumber: data.PhoneNumBer,
+                phonenumber: phonenumber,
             });
-            resolve();
-        } catch (e) { rejeck(e); }
+            return res.json({
+                status: 'ok',
+                element: createNewUser,
+            });
+        } catch (error) { next(error) }
     })
 };
 

@@ -3,6 +3,7 @@ import makeNewUser from '../service/Register';
 import UserLogin from '../service/Login';
 import getDataUser from '../service/getdatauser';
 import axios from 'axios';
+
 require("@babel/register");
 
 
@@ -14,8 +15,9 @@ const homePage = async (req, res) => {
 const userPageRegister = async (req, res) => {
     return res.render('userRegister.ejs')
 }
-const CreateNewUser = async (req, res) => {
-    await makeNewUser(req.body);
+const CreateNewUser = async (req, res, next) => {
+    await makeNewUser(req, res, next);
+    console.log(req.body)
     return res.send(" created ID");
 
 }
@@ -23,10 +25,8 @@ const CreateNewUser = async (req, res) => {
 const userPageLogin = async (req, res) => {
     return res.render('userPageLogin.ejs')
 }
-const userLogin = async (req, res) => {
-    await UserLogin(req, res);
-
-    return res.send('login ok')
+const userLogin = async (req, res, next) => {
+    await UserLogin(req, res, next);
 }
 // log out
 const userPageLogout = async (req, res) => {
@@ -37,7 +37,6 @@ const UserPage = async (req, res) => {
     await getDataUser(req, res);
     const newusserData = await axios.get('http://localhost:3001/login/userpage/tan');
     console.log(newusserData)
-
     return res.render('userID_Page.ejs')
 }
 export default {

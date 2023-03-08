@@ -1,6 +1,35 @@
-GET http://localhost:3001/
-########
-GET http://localhost:3001/register
+# trang chủ
+GET http://localhost:3001/ HTTP/1.1
+##########
 
-#######
-GET http://localhost:3001/login/userpage/tan
+# trang đăng ký
+GET http://localhost:3001/register HTTP/1.1
+##########
+# res đăng ký :
+POST http://localhost:3001/register/post HTTP/1.1
+User-Agent: rest-client
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6,zh-CN;q=0.4
+Content-Type: application/json
+{
+    "fullName" :"tantt",
+    "userID": "tttan",
+    "email" :"tan33@gmail.com",
+    "password": "135",
+    "phonenumber":"0988755431",
+}
+##########
+# trang đăng nhập
+GET http://localhost:3001/login HTTP/1.1
+
+##########
+# res đăng nhập 
+POST http://localhost:3001/login/post HTTP/1.1
+content-Type: application/json
+
+{
+    "userID": "tan",
+    "password": "123",
+}
+##########
+# trang người dùng
+GET http://localhost:3001/login/userpage/:userID HTTP/1.1

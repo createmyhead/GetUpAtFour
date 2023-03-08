@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0
+}
+
+.header {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #000000;
+}
+
+.btn {
+  background-color: #000000;
+  padding: 1rem;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}
+
+.btn:hover {
+  background-color: gold;
+}
+
+.home {}
+
+.signin {}
+
+.login {}
+
+.seachfor {}
+
+.seach {}
+
+.nav {
+  width: 15rem;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(30, 83, 101, 0.6);
+  justify-content: flex-start;
+  text-align: center;
+
+}
+
+.btnnva {
+  width: 15rem;
+  font-size: 1.5rem;
+  padding: 10px 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btnnva:hover {
+  background-color: rgb(0, 255, 255);
+}
+
+
+.bodycontent {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.content {
+  flex-grow: 8;
+
+}
+
+.footer {}
